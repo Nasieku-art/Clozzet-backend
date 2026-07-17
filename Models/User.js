@@ -13,7 +13,7 @@ const userSchema = new Schema(
 );
 
 userSchema.pre("save", async function () {
-  if (!this.isModified("password")) return;
+  if (!this.isModified("passWord")) return;
   const salt = await bcrypt.genSalt(10);
   this.passWord = await bcrypt.hash(this.passWord, salt);
 });
